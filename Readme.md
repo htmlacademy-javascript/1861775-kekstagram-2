@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Шамрат Темирбулатов](https://up.htmlacademy.ru/javascript-individual/2/user/1861775).
-* Наставник: `Дмитрий Беллавин`.
+* Наставник: [Дмитрий Беллавин](https://htmlacademy.ru/profile/bellavin).
 
 ---
 
