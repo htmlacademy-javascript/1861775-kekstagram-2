@@ -34,9 +34,4 @@ function extractsNumbers(string = '') {
     return NaN;
   }
 }
-console.log(extractsNumbers('2023 год'));
-console.log(extractsNumbers('ECMAScript 2022'));
-console.log(extractsNumbers('1 кефир, 0.5 батона'));
-console.log(extractsNumbers('агент 007'));
-console.log(extractsNumbers('а я томат'));
-console.log(extractsNumbers(-1));
+
