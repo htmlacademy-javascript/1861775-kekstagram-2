@@ -1,28 +1,28 @@
-const ID_PHOTO_RANGE = {
+const IdPhotoRange = {
   MIN: 1,
   MAX: 25
 };
 
-const ID_URL_RANGE = {
+const IdUrlRange = {
   MIN: 1,
   MAX: 25
 };
 
-const LIKES_RANGE = {
+const LikesRange = {
   MIN: 15,
   MAX: 200
 };
 
-const COMMENTS_RANGE = {
+const CommentsRange = {
   MIN: 0,
   MAX: 30
 };
 
-const ID_MESSAGER_RANGE = {
+const IdMessagerRange = {
   MIN: 1,
   MAX: 1111
 };
-const AVATAR_RANGE = [
+const AvatarRange = [
   'img/avatar-1.svg',
   'img/avatar-2.svg',
   'img/avatar-3.svg',
@@ -31,7 +31,7 @@ const AVATAR_RANGE = [
   'img/avatar-6.svg',
 ];
 
-const MESSAGER_RANGE = {
+const MessagerRange = {
   MIN: 1,
   MAX: 2
 };
@@ -91,24 +91,24 @@ const getId = () => {
   };
   return increasesId;
 };
-const savePhoto = getId();
-const saveComment = getId();
+const generatePhoto = getId();
+const generateComment = getId();
 const createComment = () => (
   {
-    id: saveComment(),
-    avatar: AVATAR_RANGE[getRandomInteger(0, AVATAR_RANGE.length - 1)],
+    id: generateComment(),
+    avatar: AvatarRange[getRandomInteger(0, AvatarRange.length - 1)],
     message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
     name: NAME[getRandomInteger(0, NAME.length - 1)]
   }
 );
 const createPhoto = () => {
-  const id = savePhoto();
+  const id = generatePhoto();
   return {
     id: id,
     url: `photos/${id}.jpg`,
     description: DESCRIPTION[getRandomInteger(0, DESCRIPTION.length - 1)],
-    like: getRandomInteger(LIKES_RANGE.MIN, LIKES_RANGE.MAX),
-    comment: Array.from({ length: getRandomInteger(COMMENTS_RANGE.MIN, COMMENTS_RANGE.MAX) }, () => createComment()),
+    like: getRandomInteger(LikesRange.MIN, LikesRange.MAX),
+    comment: Array.from({ length: getRandomInteger(IdMessagerRange.MIN, IdMessagerRange.MAX) }, () => createComment()),
   };
 };
 const array = Array.from({ length: 25 }, () => createPhoto());
