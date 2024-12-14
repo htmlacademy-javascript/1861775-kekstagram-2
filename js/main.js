@@ -22,7 +22,7 @@ const IdMessagerRange = {
   MIN: 1,
   MAX: 1111
 };
-const AvatarRange = [
+const AVATARRANGE = [
   'img/avatar-1.svg',
   'img/avatar-2.svg',
   'img/avatar-3.svg',
@@ -96,7 +96,7 @@ const generateComment = getId();
 const createComment = () => (
   {
     id: generateComment(),
-    avatar: AvatarRange[getRandomInteger(0, AvatarRange.length - 1)],
+    avatar: AVATARRANGE[getRandomInteger(0, AVATARRANGE.length - 1)],
     message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
     name: NAME[getRandomInteger(0, NAME.length - 1)]
   }
