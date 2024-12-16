@@ -1,30 +1,16 @@
 import { getRandomInteger } from './util.js';
 
-const IdPhotoRange = {
-  MIN: 1,
-  MAX: 25
-};
-
-const IdUrlRange = {
-  MIN: 1,
-  MAX: 25
-};
 
 const LikesRange = {
   MIN: 15,
   MAX: 200
 };
 
-const CommentsRange = {
-  MIN: 0,
-  MAX: 30
-};
-
 const IdMessagerRange = {
   MIN: 1,
   MAX: 1111
 };
-const AvatarRange = [
+const AVATAR_RANGE = [
   'img/avatar-1.svg',
   'img/avatar-2.svg',
   'img/avatar-3.svg',
@@ -32,11 +18,6 @@ const AvatarRange = [
   'img/avatar-5.svg',
   'img/avatar-6.svg',
 ];
-
-const MessagerRange = {
-  MIN: 1,
-  MAX: 2
-};
 
 const DESCRIPTION = [
   'Закат на берегу моря',
@@ -86,7 +67,7 @@ const getId = () => {
   let id = 1;
   function increasesId() {
     return id++;
-  };
+  }
   return increasesId;
 };
 const generatePhoto = getId();
@@ -95,7 +76,7 @@ const generateComment = getId();
 const createComment = () => (
   {
     id: generateComment(),
-    avatar: AvatarRange[getRandomInteger(0, AvatarRange.length - 1)],
+    avatar: AVATAR_RANGE[getRandomInteger(0, AVATAR_RANGE.length - 1)],
     message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
     name: NAME[getRandomInteger(0, NAME.length - 1)]
   }
@@ -112,5 +93,4 @@ const createPhoto = () => {
 };
 export const array = Array.from({ length: 25 }, () => createPhoto());
 
-console.log(array);
 
