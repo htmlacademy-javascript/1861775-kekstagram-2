@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 
-// eslint-disable-next-line no-unused-vars
 const checkLength = (string = '', maxSymbols = 1) => string.length <= maxSymbols;
 
 const isPalindrome = (string = '') => {
