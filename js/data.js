@@ -1,15 +1,16 @@
-import { getRandomInteger } from './util.js';
-
+import { getRandomInt } from './util.js';
+import { getId } from './util.js';
 
 const LikesRange = {
   MIN: 15,
   MAX: 200
 };
 
-const IdMessagerRange = {
-  MIN: 1,
-  MAX: 1111
+const CommentsRange = {
+  MIN: 5,
+  MAX: 50
 };
+
 const AVATAR_RANGE = [
   'img/avatar-1.svg',
   'img/avatar-2.svg',
@@ -63,34 +64,31 @@ const NAME = [
   'Сэм Фишер'
 ];
 
-const getId = () => {
-  let id = 1;
-  function increasesId() {
-    return id++;
-  }
-  return increasesId;
-};
-const generatePhoto = getId();
-const generateComment = getId();
+let generatePhoto = getId();
+
+let generateComment = getId();
 
 const createComment = () => (
   {
     id: generateComment(),
-    avatar: AVATAR_RANGE[getRandomInteger(0, AVATAR_RANGE.length - 1)],
-    message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
-    name: NAME[getRandomInteger(0, NAME.length - 1)]
+    avatar: AVATAR_RANGE[getRandomInt(0, AVATAR_RANGE.length - 1)],
+    message: MESSAGE[getRandomInt(0, MESSAGE.length - 1)],
+    name: NAME[getRandomInt(0, NAME.length - 1)],
   }
 );
+
 const createPhoto = () => {
-  const id = generatePhoto();
+  let id = generatePhoto();
   return {
     id: id,
     url: `photos/${id}.jpg`,
-    description: DESCRIPTION[getRandomInteger(0, DESCRIPTION.length - 1)],
-    like: getRandomInteger(LikesRange.MIN, LikesRange.MAX),
-    comment: Array.from({ length: getRandomInteger(IdMessagerRange.MIN, IdMessagerRange.MAX) }, () => createComment()),
+    description: DESCRIPTION[getRandomInt(0, DESCRIPTION.length - 1)],
+    likes: getRandomInt(LikesRange.MIN, LikesRange.MAX),
+    comment: Array.from({ length: getRandomInt(CommentsRange.MIN, CommentsRange.MAX) }, () => createComment()),
   };
 };
-export const array = Array.from({ length: 25 }, () => createPhoto());
 
+const createPosts = () => Array.from({ length: 25 }, createPhoto);
 
+const posts = createPosts();
+export { posts };
