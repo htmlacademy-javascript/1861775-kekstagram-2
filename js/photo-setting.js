@@ -1,34 +1,38 @@
-const image = document.querySelector('.img-upload__preview img');
+effectLevelContainerElement.classList.remove('hidden');
+sliderElement.noUiSlider.updateOptions({
+  range: { min: effectConfig.min, max: effectConfig.max },
+  start: effectConfig.start,
+  step: effectConfig.step,
+});
+  };
 
-// Изменение масштаба изображения
-const editPhotoScale = () => {
-  const scaleControlSmallerButtonElement = document.querySelector('.scale__control--smaller');
-  const scaleControlBiggerButtonElement = document.querySelector('.scale__control--bigger');
-  const scaleControlValueElement = document.querySelector('.scale__control--value');
-  const SCALE_STEP = 25;
-  const SCALE_MIN = 25;
-  const SCALE_MAX = 100;
+for (const effect of effectsListElement) {
+  effectLevelContainerElement.classList.add('hidden');
 
-  // Получение текущего значения масштаба
-  let scaleValue = parseFloat(scaleControlValueElement.value.replace('%', ''));
+  effect.addEventListener('change', () => {
 
-  // Обработчик события нажатия на кнопку уменьшения масштаба
-  scaleControlSmallerButtonElement.addEventListener('click', () => {
-    if (scaleValue > SCALE_MIN) {
-      scaleValue -= SCALE_STEP;
-    }
-    scaleControlValueElement.setAttribute('value', `${scaleValue}%`);
-    image.style.setProperty('transform', `scale(0.${scaleValue})`);
+    image.classList.forEach((className) => {
+      if (className.startsWith('effects__preview--')) {
+        image.classList.remove(className);
+      }
+    });
+
+    const effectName = effect.id.substring(7); // Получаем название эффекта
+    image.classList.add(effects__preview--${ effectName });
+
+    updateSliderOptions(effectName);
+    applyEffect(effectName, effects[effectName].start);
   });
+}
 
-  // Обработчик события нажатия на кнопку увеличения масштаба
-  scaleControlBiggerButtonElement.addEventListener('click', () => {
-    if (scaleValue < SCALE_MAX) {
-      scaleValue += SCALE_STEP;
-    }
-    scaleControlValueElement.setAttribute('value', `${scaleValue} %`);
-    image.setAttribute('style', scaleValue === SCALE_MAX ? 'transform: scale(1.00)' : `transform: scale(0.${scaleValue})`);
-  });
+// Обработчик изменения положения ползунка на слайдере
+sliderElement.noUiSlider.on('update', (values, handle) => {
+  let effectValue = parseFloat(values[handle]);
+  effectValue = Number.isInteger(effectValue) ? effectValue : effectValue.toFixed(1);
+  effectLevelElement.setAttribute('value', effectValue);
+  const selectedEffect = document.querySelector('.effects__radio:checked').getAttribute('id').substring(7);
+  applyEffect(selectedEffect, effectValue);
+});
 };
 
-export { editPhotoScale };
+export { editPhotoScale, editPhotoEffect, resetPhotoSettings }
