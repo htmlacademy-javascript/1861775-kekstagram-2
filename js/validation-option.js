@@ -20,6 +20,7 @@ const getHashtagErrorMessage = (value) => {
   return '';
 };
 
+// eslint-disable-next-line no-undef
 const pristine = new Pristine(formElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
@@ -41,7 +42,7 @@ const validateHashtags = (value) => { // хэштеги необязательн
   }
 
   for (const hashtag of hashtags) {
-    if ((hashtag === '#') || (!hashtagPattern.test(hashtag)) || (uniqueHashtags.includes(hashtag))) {
+    if ((hashtag === '#')(!hashtagPattern.test(hashtag))(uniqueHashtags.includes(hashtag))) {
       return false;
     }
 

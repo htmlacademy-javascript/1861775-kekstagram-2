@@ -1,12 +1,21 @@
-import { posts } from './data.js';
+import { getData } from './api.js';
 import { createRenderPictures } from './render-picture.js';
 import { openModal } from './manipulation-modal.js';
-import { editPhotoScale } from "./photo-setting";
-import { closePhotoModal, editPhotoModal, postForm } from './edit-photo-modal.js';
+import { editPhotoModal, configureFormSubmit } from './edit-photo-modal.js';
+import { addUserPhoto } from './add-user-photo.js';
+import { showLoadErrorMessage } from './util.js';
+import { showFilters } from './filters.js';
 
-createRenderPictures(posts);
-openModal(posts);
+addUserPhoto();
 editPhotoModal();
-closePhotoModal();
-editPhotoScale();
-postForm();
+configureFormSubmit();
+
+getData()
+  .then((photos) => {
+    createRenderPictures(photos);
+    openModal(photos);
+    showFilters(photos);
+  })
+  .catch(() => {
+    showLoadErrorMessage();
+  });
