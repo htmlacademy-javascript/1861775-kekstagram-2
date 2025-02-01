@@ -33,7 +33,6 @@ const validateHashtags = (value) => { // хэштеги необязательн
   }
 
   const hashtags = value.trim().toLowerCase().split(/\s+/); // регистр не учитывается, разделяется пробелами
-  console.log(hashtags);
   const uniqueHashtags = [];
   const hashtagPattern = /^#[a-zа-яё0-9]{1,19}$/; // начинается с #, строка состоит из букв и чисел, не может состоять только из решетки, длина 20 символов
 
