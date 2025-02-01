@@ -42,7 +42,7 @@ const validateHashtags = (value) => { // хэштеги необязательн
   }
 
   for (const hashtag of hashtags) {
-    if ((hashtag === '#')(!hashtagPattern.test(hashtag))(uniqueHashtags.includes(hashtag))) {
+    if ((hashtag === '#') || (!hashtagPattern.test(hashtag)) || (uniqueHashtags.includes(hashtag))) {
       return false;
     }
 

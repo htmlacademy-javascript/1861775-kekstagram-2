@@ -33,7 +33,7 @@ const loadUserPhoto = () => {
 
     const effectsPreview = formElement.querySelectorAll('.effects__preview');
     for (const effect of effectsPreview) {
-      effect.setAttribute('style', `background - image: url("${imgUploadPrewiew.src}");`);
+      effect.setAttribute('style', `background-image: url("${imgUploadPrewiew.src}");`);
     }
   });
 };
