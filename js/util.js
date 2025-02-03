@@ -1,4 +1,4 @@
-import { onEscapeDown } from "./edit-photo-modal.js";
+import { onEscapeDown } from './edit-photo-modal.js';
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -25,7 +25,7 @@ const getId = () => {
     return id++;
   }
   return increasesId;
-}
+};
 
 // Показывает сообщение об ошибке при загрузке данных
 const showLoadErrorMessage = () => {
@@ -52,7 +52,7 @@ const closeUserMessage = (button, message) => {
   button.addEventListener('click', () => {
     message.remove();
   });
-}
+};
 
 // Отображение сообщений для пользователя
 const showMessage = (templateSelector, messageClass, buttonSelector) => {
