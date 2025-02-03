@@ -22,13 +22,11 @@ function closeModal() {
 const openModal = (photos) => {
   thumbnailsContainerElement.addEventListener('click', (evt) => {
     if (evt.target.matches('.picture__img')) {
-      let photo = photos.find((photo) => {
-        return photo.id === Number(evt.target.dataset.photoId);
-      });
+      const foundPhotoElement = photos.find((photo) => photo.id === Number(evt.target.dataset.photoId));
       evt.preventDefault();
       modalElement.classList.remove('hidden');
       document.body.classList.add('modal-open');
-      createFullSizePhoto(photo);
+      createFullSizePhoto(foundPhotoElement);
     }
 
     document.addEventListener('keydown', onEscapeDown);

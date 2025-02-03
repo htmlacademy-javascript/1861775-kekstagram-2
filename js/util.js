@@ -26,6 +26,13 @@ const getId = () => {
   }
   return increasesId;
 };
+// Клонирование элемента
+const cloneElement = (template) => {
+  const fragmentElement = document.createDocumentFragment();
+  const newElement = template.cloneNode(true);
+  fragmentElement.appendChild(newElement);
+  document.body.appendChild(fragmentElement);
+};
 
 // Показывает сообщение об ошибке при загрузке данных
 const showLoadErrorMessage = () => {
@@ -36,15 +43,6 @@ const showLoadErrorMessage = () => {
   setTimeout(() => {
     document.querySelector('.data-error').classList.add('hidden');
   }, errorShowTime);
-};
-
-
-// Клонирование элемента
-const cloneElement = (template) => {
-  const fragmentElement = document.createDocumentFragment();
-  const newElement = template.cloneNode(true);
-  fragmentElement.appendChild(newElement);
-  document.body.appendChild(fragmentElement);
 };
 
 // Закрытие пользвательских сообщений
